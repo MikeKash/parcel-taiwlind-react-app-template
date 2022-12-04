@@ -1,0 +1,27 @@
+{
+  "name": "test-parcel-tail-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "parcel src/public/index.html",
+    "build": "parcel build src/public/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.10",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "parcel": "^2.8.0",
+    "parceljs": "^0.0.1",
+    "postcss": "^8.4.19",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.3"
+  }
+}
