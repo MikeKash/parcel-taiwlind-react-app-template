@@ -16,13 +16,12 @@ const Login = () => {
 
     try {
       const response = await axios.post(REGISTER_URL, {
-        userEmail: "string",
-        password: "string",
+        userEmail: "tony@stark.com",
+        password: "123456789",
       });
       const accessToken = response?.data?.token;
-      const roles = [2001, 1984, 5150];
       const user = response?.data?.user;
-      setAuth({ user, roles, accessToken });
+      setAuth({ user, accessToken });
       navigate(from || "/", { replace: true });
     } catch (err) {
       console.error("err logging in", err);

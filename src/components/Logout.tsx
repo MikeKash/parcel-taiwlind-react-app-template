@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import AuthContext, { initialAuth } from "../context/AuthProvider";
+import { MouseEvent, useContext } from "react";
+import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
@@ -7,13 +7,13 @@ const Logout = () => {
   const { setAuth } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  const handleLogout = async (e: any) => {
+  const handleLogout = async (e: MouseEvent) => {
     e.preventDefault();
 
     try {
       const response = await axios.post("/api/Auth/logout");
       if (response.status === 200) {
-        setAuth(initialAuth);
+        setAuth(undefined);
         navigate("/login");
       }
     } catch (err) {

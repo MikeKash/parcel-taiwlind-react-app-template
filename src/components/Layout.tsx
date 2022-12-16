@@ -4,6 +4,9 @@ import AuthContext from "../context/AuthProvider";
 
 const Layout = () => {
   const { auth } = useContext(AuthContext);
+
+  const isLoggedIn = !!auth?.accessToken;
+
   return (
     <div>
       <nav className="mb-4">
@@ -11,7 +14,7 @@ const Layout = () => {
           <li>
             <Link to="/register">Register</Link>
           </li>
-          {!auth?.user?.userEmail ? (
+          {!isLoggedIn ? (
             <li>
               <Link to="/login">Login</Link>
             </li>
@@ -23,13 +26,17 @@ const Layout = () => {
           {/* <li>
             <Link to="/refresh-token">Refresh Token</Link>
           </li> */}
-          <li className="font-bold mt-2">To Protected routes</li>
-          <li>
-            <Link to="/">HOME</Link>
-          </li>
-          <li>
-            <Link to="/admin">See Admins TEST</Link>
-          </li>
+          {isLoggedIn ? (
+            <>
+              <li className="font-bold mt-2">To Protected routes</li>
+              <li>
+                <Link to="/">HOME</Link>
+              </li>
+              <li>
+                <Link to="/admin">See Admins TEST</Link>
+              </li>
+            </>
+          ) : null}
         </ul>
       </nav>
 

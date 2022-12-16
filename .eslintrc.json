@@ -8,7 +8,7 @@
   ],
   "rules": {
     "react/prop-types": "off",
-    "no-duplicate-imports": "error",
+    "no-duplicate-imports": ["error", { "considerQueryString": true }],
     "react/react-in-jsx-scope": "off",
     "react/no-unescaped-entities": "off",
     "@typescript-eslint/no-non-null-assertion": "off"

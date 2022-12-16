@@ -6,7 +6,7 @@ import { AxiosRequestConfig } from "axios";
 
 const useAxiosPrivate = () => {
   const refresh = useRefreshToken();
-  const { auth } = useAuth();
+  const { auth, setAuth } = useAuth();
 
   useEffect(() => {
     const requestIntercept = axios.interceptors.request.use(
@@ -23,7 +23,6 @@ const useAxiosPrivate = () => {
       (response) => response,
       async (error) => {
         const prevRequest = error?.config;
-        console.log("error", error);
         if (
           error?.response?.status === 401 &&
           ![
@@ -37,6 +36,8 @@ const useAxiosPrivate = () => {
           const newAccessToken = await refresh();
           prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
           return axios(prevRequest);
+        } else {
+          setAuth(undefined);
         }
         return Promise.reject(error);
       }

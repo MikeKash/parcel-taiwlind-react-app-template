@@ -1,36 +1,25 @@
-import { createContext, useState, PropsWithChildren } from "react";
+import { createContext, PropsWithChildren } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export type TAuthContext = {
-  auth: {
-    roles: number[];
-    user: { userEmail: string; email: string } | undefined;
+  auth?: {
+    roles?: string[];
+    user: { userEmail: string; userName: string };
     accessToken: string;
   };
-  setAuth: React.Dispatch<
-    React.SetStateAction<{
-      roles: number[];
-      user: {
-        userEmail: string;
-        email: string;
-      };
-      accessToken: string;
-    }>
-  >;
-};
-
-export const initialAuth = {
-  roles: [0],
-  user: { userEmail: "", email: "" },
-  accessToken: "",
+  setAuth: (auth?: TAuthContext["auth"]) => void;
 };
 
 const AuthContext = createContext<TAuthContext>({
-  auth: initialAuth,
+  auth: undefined,
   setAuth: () => undefined,
 });
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
-  const [auth, setAuth] = useState(initialAuth);
+  const [auth, setAuth] = useLocalStorage<TAuthContext["auth"]>(
+    "userData",
+    undefined
+  );
 
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
