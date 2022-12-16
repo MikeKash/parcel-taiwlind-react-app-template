@@ -1,11 +1,10 @@
-import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./Router";
 
 export function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">
-        Hello My new React Template App!
-      </h1>
-    </div>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   );
 }
