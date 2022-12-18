@@ -1,6 +1,6 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import PrivateInfo from "./PrivateInfo";
+import PrivateInfo from "../pages/PrivateInfo";
 
 const ProtectedRoute = ({ allowedRoles }: { allowedRoles: number[] }) => {
   const { auth } = useAuth();

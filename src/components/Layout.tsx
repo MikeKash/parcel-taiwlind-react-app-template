@@ -11,13 +11,18 @@ const Layout = () => {
     <div>
       <nav className="mb-4">
         <ul>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
           {!isLoggedIn ? (
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
+            <>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/restore-password">Reset Password</Link>
+              </li>
+            </>
           ) : (
             <li>
               <Link to="/logout">Logout</Link>

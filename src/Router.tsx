@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
-import Admin from "./components/Admin";
+import Admin from "./pages/Admin";
 import Layout from "./components/Layout";
-import Login from "./components/Login";
-import Logout from "./components/Logout";
-import Missing from "./components/Missing";
+import Login from "./pages/Login";
+import Logout from "./pages/Logout";
+import Missing from "./pages/Missing";
 import ProtectedRoute from "./components/ProtectedRoute";
-import RefreshToken from "./components/RefreshToken";
-import Register from "./components/Register";
-import Unauthorized from "./components/Unauthorized";
+import Register from "./pages/Register";
+import Unauthorized from "./pages/Unauthorized";
 import Home from "./pages/Home";
+import ResetPassword from "./pages/ResetPassword";
 
 const ROLES = {
   User: 2001,
@@ -21,9 +21,9 @@ const AppRouter = () => (
     <Route path="/" element={<Layout />}>
       <Route path="login" element={<Login />} />
       <Route path="logout" element={<Logout />} />
+      <Route path="restore-password" element={<ResetPassword />} />
       <Route path="register" element={<Register />} />
       <Route path="unauthorized" element={<Unauthorized />} />
-      <Route path="refresh-token" element={<RefreshToken />} />
 
       {/* protected routes */}
       <Route element={<ProtectedRoute allowedRoles={[ROLES.User]} />}>
